@@ -27,12 +27,6 @@ public class HelloWorldController {
 		return "helloworld/index";
 	}
 	
-	//Create a class named Whisperer that makes Strings lower case
-	//Using the method below create a method "Whisper" for a GetMapping that does the same thing *BUT uses Whisperer
-	// This means that you should map a GET to the path "whisper"
-	// This means you should have a method named "whisper" that returns a ModelAndView
-	// returns model and view
-	
 	@GetMapping("Whisper")
 	public ModelAndView Whisper(@RequestParam(required=false, defaultValue="«silence»") String message) {
 		ModelAndView mv = new ModelAndView("helloworld/message");
@@ -52,16 +46,5 @@ public class HelloWorldController {
 		mv.addObject("message", result);
 		return mv;
 	}
-	// returns model only
-	@PostMapping("adder")
-	public String addTwoNumbers(@RequestParam(name="left") int first, @RequestParam(name="right") double second, Model model) {
-	//Declaring variable and decoration required importing the Adder Class from resources
-		Adder adder = new Adder (first, second);
-		double result = adder.calculate();
-		
-		model.addAttribute("sum", result);
-		return "helloworld/sum-result";
-	}
 
-	
 }
